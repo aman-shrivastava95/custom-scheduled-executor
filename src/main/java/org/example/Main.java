@@ -43,6 +43,8 @@ class TaskSchedulerImpl implements TaskScheduler {
 
     @Override
     public boolean scheduleTask(ScheduledTask task) {
+        if(executorService.isShutdown())
+            return false ;
         maxTime= Math.max(maxTime, task.executeAt) ;
         return taskList.offer(task) ;
     }
