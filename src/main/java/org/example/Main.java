@@ -23,7 +23,7 @@ class ScheduledTask implements Comparable<ScheduledTask> {
     }
 }
 interface TaskScheduler {
-    public boolean scheduleTask(ScheduledTask task ) ;
+    public boolean scheduleTask(ScheduledTask task) ;
     public void start() ;
 
     public void shutDown() ;
@@ -83,16 +83,17 @@ class TaskSchedulerImpl implements TaskScheduler {
 public class Main {
     public static void main(String[] args) throws InterruptedException {
         TaskScheduler scheduler = new TaskSchedulerImpl() ;
-        //K
+        //Keeping separate thread for scheduling the tasks
         new Thread(()->{
-
-            boolean  res = scheduler.scheduleTask(new ScheduledTask(()-> System.out.println("executed the task after 10 seconds"), System.currentTimeMillis() + 10000));
+            boolean res = false ;
+            res = scheduler.scheduleTask(new ScheduledTask(()-> System.out.println("executed the task after 10 seconds"), System.currentTimeMillis() + 10000));
             res = scheduler.scheduleTask(new ScheduledTask(()-> System.out.println("executed the task after 5 seconds"), System.currentTimeMillis() + 5000));
             res = scheduler.scheduleTask(new ScheduledTask(()-> System.out.println("executed the task after 2 seconds"), System.currentTimeMillis() + 2000));
 
             scheduler.start();
         }).start();
 
+        //keeping separate thread for shutting down the scheduled executor service
         new Thread(scheduler::shutDown).start();
     }
 }
