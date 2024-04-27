@@ -1,4 +1,4 @@
-package org.example;
+package customScheduledExecutorService;
 
 import java.util.Objects;
 import java.util.concurrent.*;
