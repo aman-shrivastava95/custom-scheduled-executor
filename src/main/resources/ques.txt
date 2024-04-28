@@ -1,0 +1,15 @@
+Phone Screen:
+Implement a data structure to store key-value entries within a time-based interval.
+Slight variation to LRU Cache.
+
+Round 1:
+Implement a Word Search Engine, given a list of documents with text, return the document ids that the given word belongs in. Followup: Search a phrase
+
+Round 2:
+Design TinyURL
+
+Round 3:
+Implement the Unix Tail -N Command
+
+Round 4:
+Talk about a project you had the most impact on, what was the biggest challenge, etc.
